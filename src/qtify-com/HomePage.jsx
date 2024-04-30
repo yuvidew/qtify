@@ -19,7 +19,7 @@ const HomePage = () => {
                 />
             </div>
         </section>
-        <Card title = "Top Albums" />
+        <Card  />
         </>
     )
 }
