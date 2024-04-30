@@ -20,7 +20,7 @@ const HomePage = () => {
             </div>
         </section>
         <AlbumSection api = {'https://qtify-backend-labs.crio.do/albums/top'} title = "Top Albums" />
-{/*         <AlbumSection api = {'https://qtify-backend-labs.crio.do/albums/new'} title = "New Albums" /> */}
+        <AlbumSection api = {'https://qtify-backend-labs.crio.do/albums/new'} title = "New Albums" />
         </>
     )
 }
