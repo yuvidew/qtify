@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import hero from '../assets/hero.svg'
-import AlbumSection from './AlbumSection'
+import Card from './AlbumSection'
 import useFetch from '@/hook/useFetch'
 
 const HomePage = () => {
@@ -36,8 +36,7 @@ const HomePage = () => {
                 />
             </div>
         </section>
-        <AlbumSection AlbumData = {topAlbumData} title = "Top Albums" />
-        <AlbumSection AlbumData = {newAlbumData} title = "New Albums" />
+        <Card AlbumData = {topAlbumData} title = "Top Albums" />
         </>
     )
 }
