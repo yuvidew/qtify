@@ -1,12 +1,10 @@
 import { Button } from '@/components/ui/button';
-import useFetch from '@/hook/useFetch'
 import React, { useRef, useState } from 'react'
 import CardComp from './CardComp';
 import Spinner from '@/components/ui/Spinner';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
-const AlbumSection = ({api , title}) => {
-    const [songs] = useFetch(api)
+const AlbumSection = ({AlbumData , title}) => {
     const [isCollapse , setIsCollapse] = useState(false)
     const sliderRef = useRef(null)
 
@@ -25,7 +23,7 @@ const AlbumSection = ({api , title}) => {
                     {!isCollapse ? "Show All" : "Collapse"}
                 </Button>
             </div>
-            <div className=' relative mt-5'>
+            {AlbumData !==0 ?(<div className=' relative mt-5'>
                 {!isCollapse && <div className=' z-[99] absolute top-[45%] w-full flex items-center justify-between'>
                     <Button 
                         variant = "green"  
@@ -57,8 +55,8 @@ const AlbumSection = ({api , title}) => {
                     }}
                 >
                     <div className={!isCollapse ? ' flex items-center gap-3 py-2' : "grid grid-cols-6 gap-y-2 gap-x-2"}>
-                        {songs !== null ? (
-                            songs.map(ele => (
+                        {AlbumData !== null ? (
+                            AlbumData.map(ele => (
                                 <CardComp key={ele.id} ele = {ele} />
                             ))
                         ) : (
@@ -66,7 +64,12 @@ const AlbumSection = ({api , title}) => {
                         )}
                     </div>
                 </section>
-            </div>
+            </div>)
+            : (
+                <div>
+                    <Spinner/>
+                </div>
+            )}
         </section>
     )
 }

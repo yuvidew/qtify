@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 
 
 const spinnerVariants = cva(
-    'text-muted-foreground  animate-spin',
+    'text-muted-foreground  animate-spin text-white',
     {
         variants : {
             size : {

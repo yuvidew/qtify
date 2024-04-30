@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import hero from '../assets/hero.svg'
 import AlbumSection from './AlbumSection'
+import useFetch from '@/hook/useFetch'
 
 const HomePage = () => {
+    const [ getSongs] = useFetch()
+
+    const [topAlbumData , setTopAlbumData] = useState([])
+    const [newAlbumData , setNewAlbumData] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const topAlbumData = await  getSongs('https://qtify-backend-labs.crio.do/albums/top')
+            const newAlbumData = await getSongs('https://qtify-backend-labs.crio.do/albums/new')
+
+            setTopAlbumData(topAlbumData)
+            setNewAlbumData(newAlbumData)
+        }
+
+        fetchData()
+    }, [])
 
     return (
         <>
@@ -19,8 +36,8 @@ const HomePage = () => {
                 />
             </div>
         </section>
-        <AlbumSection api = {'https://qtify-backend-labs.crio.do/albums/top'} title = "Top Albums" />
-        <AlbumSection api = {'https://qtify-backend-labs.crio.do/albums/new'} title = "New Albums" />
+        <AlbumSection AlbumData = {topAlbumData} title = "Top Albums" />
+        <AlbumSection AlbumData = {newAlbumData} title = "New Albums" />
         </>
     )
 }

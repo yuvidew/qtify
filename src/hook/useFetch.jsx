@@ -1,22 +1,16 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
 
-const useFetch = (api) => {
-    const [songs , setSongs] = useState([])
-    const getSongs = async() => {
+const useFetch = () => {
+    const getSongs = async(api) => {
         try {
             const res = await axios.get(api)
-            setSongs(res.data)
+            return res.data
         } catch (error) {
-            setSongs(null)
+            return null
         }
     }
 
-    useEffect(() => {
-        getSongs()
-    } , [api])
-
-    return [songs , getSongs]
+    return [ getSongs]
 }
 
 export default useFetch
