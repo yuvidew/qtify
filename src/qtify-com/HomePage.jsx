@@ -35,8 +35,8 @@ const HomePage = () => {
                 />
             </div>
         </section>
-        <Card albumData = {topAlbumData} />
-        <Card albumData = {newAlbumData} />
+        <Card albumData = {topAlbumData} title={"Top"} />
+        <Card albumData = {newAlbumData} title={"New"} />
         </>
     )
 }

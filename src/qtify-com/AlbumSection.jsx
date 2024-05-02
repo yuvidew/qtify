@@ -10,7 +10,7 @@ const Cards = ({albumData , title}) => {
         <>
         <section className=' w-[95%] m-auto mb-[2rem]'>
             <div className=' flex items-center justify-between'>
-                <h1 className=' text-[1.2rem] text-white' >Top Album</h1>
+                <h1 className=' text-[1.2rem] text-white' >{title} Album</h1>
                 <Button variant = "ghost" onClick = {() => setTopIsCollapse(!topIsCollapse)}>
                     {!topIsCollapse ? "Show All" : "Collapse"}
                 </Button>
