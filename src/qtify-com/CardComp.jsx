@@ -4,8 +4,8 @@ import {
     CardFooter,
     CardHeader
 } from "@/components/ui/card"
-import { Button } from '@/components/ui/button'
 import { NavLink } from 'react-router-dom'
+
 
 
 const CardComp = ( {ele}) => {
@@ -13,9 +13,6 @@ const CardComp = ( {ele}) => {
         <NavLink to={'/'}>
             <Card className = "w-[15rem] h-[16rem] p-0 overflow-hidden group">
                 <div className=' relative h-full'>
-                    {ele.songs !== null && <Button variant = "default" className = "absolute top-3 left-2  opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        {ele.songs.length} songs
-                    </Button>}
                     <CardHeader className = "p-0 h-[85%]">
                         <div className='h-full p-0'>
                             <img className='h-full object-cover w-full' src={ele.image} alt="" />

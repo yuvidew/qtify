@@ -3,12 +3,17 @@ import React, { useRef, useState } from 'react'
 import CardComp from './CardComp';
 import Spinner from '@/components/ui/Spinner';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
+
 
 const Cards = ({ albumData , title}) => {
     const [topIsCollapse , setTopIsCollapse] = useState(false)
     const topSliderRef = useRef(null)
-
-
 
     const topScrollBtn = (index) => {
         topSliderRef.current.scrollBy({
@@ -63,7 +68,17 @@ const Cards = ({ albumData , title}) => {
                     <div className={!topIsCollapse ? ' flex items-center gap-3 py-2' : "grid grid-cols-6 gap-y-2 gap-x-2"}>
                         {albumData.length !== 0 ? (
                             albumData.map(ele => (
-                                <CardComp key={ele.id} ele = {ele} />
+                                <TooltipProvider key={ele.id} >
+                                <Tooltip>
+                                    <TooltipTrigger>
+                                        <CardComp ele = {ele} />
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        {ele.songs.length} songs
+                                    </TooltipContent>
+                                </Tooltip>
+                                </TooltipProvider>
+
                             ))
                         ) : (
                             <div className=' flex items-center justify-center w-full h-full'>
