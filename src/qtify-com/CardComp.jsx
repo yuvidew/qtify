@@ -26,6 +26,7 @@ const CardComp = ( {ele}) => {
                     </CardFooter>
                 </div>
             </Card>
+            <h2 className=' mt-3 text-white'>{ele.title}</h2>
         </NavLink>
     )
 }
