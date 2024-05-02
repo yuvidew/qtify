@@ -1,13 +1,14 @@
 import { Button } from '@/components/ui/button';
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import CardComp from './CardComp';
 import Spinner from '@/components/ui/Spinner';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import useFetch from '@/hook/useFetch';
 
-const Cards = ({albumData , title}) => {
+const Cards = ({ albumData , title}) => {
     const [topIsCollapse , setTopIsCollapse] = useState(false)
     const topSliderRef = useRef(null)
+
+
 
     const topScrollBtn = (index) => {
         topSliderRef.current.scrollBy({
@@ -18,13 +19,16 @@ const Cards = ({albumData , title}) => {
 
     return (
         <>
+        
         <section className=' w-[95%] m-auto mb-[2rem]'>
-            <div className=' flex items-center justify-between'>
-                <h1 className=' text-[1.2rem] text-white' >{title} Album</h1>
-                <Button variant = "ghost" onClick = {() => setTopIsCollapse(!topIsCollapse)}>
-                    {!topIsCollapse ? "Show All" : "Collapse"}
-                </Button>
-            </div>
+                {title !== null && 
+                    <div className=' flex items-center justify-between'>
+                        <h1 className=' text-[1.2rem] text-white' >{title} Album</h1>
+                        <Button variant = "ghost" onClick = {() => setTopIsCollapse(!topIsCollapse)}>
+                            {!topIsCollapse ? "Show All" : "Collapse"}
+                        </Button>
+                    </div>
+                }
             {albumData !==0 ?(<div className=' relative mt-5'>
                 {!topIsCollapse && <div className=' z-[99] absolute top-[45%] w-full flex items-center justify-between'>
                     <Button 

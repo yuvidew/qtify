@@ -2,19 +2,26 @@ import React, { useEffect, useState } from 'react'
 import hero from '../assets/hero.svg'
 import Card from './AlbumSection'
 import useFetch from '@/hook/useFetch'
+import { Songs } from './Songs'
 
 const HomePage = () => {
     const [getSongs] = useFetch()
     const [topAlbumData , setTopAlbumData] = useState([])
     const [newAlbumData , setNewAlbumData] = useState([])
+    const [songGenres , setSongGenres] = useState([])
+    const [songs , setSongs] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
             const topAlbumData = await getSongs('https://qtify-backend-labs.crio.do/albums/top')
             const newAlbumData = await getSongs('https://qtify-backend-labs.crio.do/albums/new')
+            const genres = await getSongs('https://qtify-backend-labs.crio.do/genres')
+            const songs = await getSongs('https://qtify-backend-labs.crio.do/songs')
 
             setTopAlbumData(topAlbumData)
             setNewAlbumData(newAlbumData)
+            setSongGenres(genres)
+            setSongs(songs)
         }
 
         fetchData()
@@ -37,6 +44,7 @@ const HomePage = () => {
         </section>
         <Card albumData = {topAlbumData} title={"Top"} />
         <Card albumData = {newAlbumData} title={"New"} />
+        <Songs genres = {songGenres.data} albumData = {songs} title={"Songs"} />
         </>
     )
 }
