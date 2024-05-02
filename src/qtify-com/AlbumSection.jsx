@@ -65,7 +65,7 @@ const Cards = ({ albumData , title}) => {
                         scrollbarWidth : "none"
                     }}
                 >
-                    <div className={!topIsCollapse ? ' flex items-center gap-3 py-2' : "grid grid-cols-6 gap-y-2 gap-x-2"}>
+                    <div className={!topIsCollapse ? ' flex items-start gap-3 py-2' : "grid grid-cols-6 gap-y-2 gap-x-2"}>
                         {albumData.length !== 0 ? (
                             albumData.map(ele => (
                                 <TooltipProvider key={ele.id} >

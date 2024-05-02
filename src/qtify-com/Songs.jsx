@@ -7,7 +7,6 @@ import { SongCard } from './SongCard';
 export const Songs = ({genres , albumData , title}) => {
 
     const [theKey , setTheKey] = useState("All")
-    const [topIsCollapse , setTopIsCollapse] = useState(false)
     const topSliderRef = useRef(null)
     const filterData = albumData.filter((ele) => ele.genre.key == theKey)
 
@@ -69,7 +68,7 @@ export const Songs = ({genres , albumData , title}) => {
                         scrollbarWidth : "none"
                     }}
                 >
-                    <div className={ ' flex items-center gap-3 py-2'}>
+                    <div className={ ' flex items-start gap-3 py-2'}>
                         {filterData.length !== 0 ? (
                             filterData.map(ele => (
                                 <SongCard key={ele.id} ele = {ele} />
